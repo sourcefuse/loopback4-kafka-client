@@ -1,15 +1,25 @@
-# kafka-connector
+# loopback4-kafka-client
 
+
+[![LoopBack](<https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png>)](http://loopback.io/)
+
+[![Node version](https://img.shields.io/node/v/loopback4-kafka-client.svg?style=flat-square)](https://nodejs.org/en/download/)
+[![Loopback Core Version](https://img.shields.io/npm/dependency-version/loopback4-kafka-client/@loopback/core.svg?color=dark%20green&style=flat-square)](https://github.com/strongloop/loopback-next)
+[![Loopback Build Version](https://img.shields.io/npm/dependency-version/loopback4-kafka-client/dev/@loopback/build.svg?color=dark%20green&style=flat-square)](https://github.com/strongloop/loopback-next/tree/master/packages/build)
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/loopback4-kafka-client?style=flat-square)
+
+[![Latest version](https://img.shields.io/npm/v/loopback4-kafka-client.svg?style=flat-square)](https://www.npmjs.com/package/loopback4-kafka-client)
+[![License](https://img.shields.io/github/license/sourcefuse/loopback4-kafka-client.svg?color=blue&label=License&style=flat-square)](https://github.com/sourcefuse/loopback4-kafka-client/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/npm/dw/loopback4-kafka-client.svg?label=Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
+[![Total Downloads](https://img.shields.io/npm/dt/loopback4-kafka-client.svg?label=Total%20Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
 A Kakfa Client for Loopback4 built on top of [KafkaJS](https://kafka.js.org/).
-
-[![LoopBack](<https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png>)](http://loopback.io/)
 
 ## Installation
 
 Install KafkaConnectorComponent using `npm`;
 
 ```sh
-$ [npm install | yarn add] kafka-connector
+$ [npm install | yarn add] loopback4-kafka-client
 ```
 
 ## Basic Use
@@ -22,7 +32,7 @@ import {
   KafkaClientBindings,
   KafkaClientComponent,
   KafkaClientOptions,
-} from '@local/kafka-connector';
+} from 'loopback4-kafka-client';
 // ...
 export class MyApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
