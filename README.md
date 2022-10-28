@@ -12,6 +12,7 @@
 [![License](https://img.shields.io/github/license/sourcefuse/loopback4-kafka-client.svg?color=blue&label=License&style=flat-square)](https://github.com/sourcefuse/loopback4-kafka-client/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dw/loopback4-kafka-client.svg?label=Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
 [![Total Downloads](https://img.shields.io/npm/dt/loopback4-kafka-client.svg?label=Total%20Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
+
 A Kakfa Client for Loopback4 built on top of [KafkaJS](https://kafka.js.org/).
 
 ## Installation
