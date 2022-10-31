@@ -1,6 +1,5 @@
 # loopback4-kafka-client
 
-
 [![LoopBack](<https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png>)](http://loopback.io/)
 
 [![Node version](https://img.shields.io/node/v/loopback4-kafka-client.svg?style=flat-square)](https://nodejs.org/en/download/)
@@ -12,6 +11,7 @@
 [![License](https://img.shields.io/github/license/sourcefuse/loopback4-kafka-client.svg?color=blue&label=License&style=flat-square)](https://github.com/sourcefuse/loopback4-kafka-client/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dw/loopback4-kafka-client.svg?label=Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
 [![Total Downloads](https://img.shields.io/npm/dt/loopback4-kafka-client.svg?label=Total%20Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
+
 A Kakfa Client for Loopback4 built on top of [KafkaJS](https://kafka.js.org/).
 
 ## Installation
@@ -83,11 +83,11 @@ export class TestStream implements IStreamDefinition {
 
 ### Consumer
 
-A Consumer is a [`loopback extension`](https://loopback.io/doc/en/lb4/Extension-point-and-extensions.html) that is used by the [`KafkaConsumerService`](./src/services/kafka-consumer.service.ts) to initialize consumers. It must implement the `IConsumer` interface and should be using the `asConsumer` binding template. If you want the consumers to start at the start of your application, you should pass the `initObservers` config to the Component configuration.
+A Consumer is a [`loopback extension`](https://loopback.io/doc/en/lb4/Extension-point-and-extensions.html) that is used by the [`KafkaConsumerService`](./src/services/kafka-consumer.service.ts) to initialize consumers. It must implement the `IConsumer` interface and should be using the `@consumer()` decorator. If you want the consumers to start at the start of your application, you should pass the `initObservers` config to the Component configuration.
 
 ##### Example
 
-```
+```ts
 // application.ts
 this.configure(KafkaConnectorComponentBindings.COMPONENT).to({
   ...
@@ -96,8 +96,9 @@ this.configure(KafkaConnectorComponentBindings.COMPONENT).to({
 });
 ```
 
-```
+```ts
 // start.consumer.ts
+@consumer<TestStream, Events.start>()
 export class StartConsumer implements IConsumer<TestStream, Events.start> {
   constructor(
     @inject('test.handler.start')
@@ -114,19 +115,21 @@ export class StartConsumer implements IConsumer<TestStream, Events.start> {
 
 If you want to write a shared handler for different events, you can use the `eventHandlerKey` to bind a handler in the application -
 
-```
+```ts
 // application.ts
 this.bind(eventHandlerKey(Events.Start)).to((payload: StartEvent) => {
   console.log(payload);
-})
-this.bind(eventHandlerKey<TestStream, Events.Stop>(Events.Stop)).toProvider(CustomEventHandlerProvider);
+});
+this.bind(eventHandlerKey<TestStream, Events.Stop>(Events.Stop)).toProvider(
+  CustomEventHandlerProvider,
+);
 ```
 
 and then you can use the handler using the `@eventHandler` decorator -
 
-```
+```ts
 // start.consumer.ts
-@injectable(asConsumer)
+@consumer<TestStream, Events.start>()
 export class StartConsumer implements IConsumer<TestStream, Events.start> {
   constructor(
     @eventHandler<TestStream>(Events.Start)
@@ -144,7 +147,7 @@ Note: The topic name passed to decorator must be first configured in the Compone
 
 #### Example
 
-```
+```ts
 // application.ts
 ...
 this.configure(KafkaConnectorComponentBindings.COMPONENT).to({
