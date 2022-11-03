@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.0.0...v1.0.1) (2022-11-03)
+
+
+### Bug Fixes
+
+* **ci-cd:** change main branch to master ([c3a8a2f](https://github.com/sourcefuse/loopback4-kafka-client/commit/c3a8a2f06bcb31ed13602a10648cdbecde27547f)), closes [#2](https://github.com/sourcefuse/loopback4-kafka-client/issues/2)
+* **decorators:** add decorator to tag a consumer service ([0c69402](https://github.com/sourcefuse/loopback4-kafka-client/commit/0c69402e4241f684e263361bf0e7b83d7f561447)), closes [#2](https://github.com/sourcefuse/loopback4-kafka-client/issues/2)
+
 # 1.0.0 (2022-10-18)
 
 
