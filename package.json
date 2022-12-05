@@ -47,21 +47,21 @@
     "!*/__tests__"
   ],
   "peerDependencies": {
-    "@loopback/core": "^4.0.3"
+    "@loopback/core": "^4.0.5"
   },
   "dependencies": {
     "@loopback/core": "^4.0.5",
     "@loopback/repository": "^5.1.0",
     "@loopback/rest": "^12.0.5",
     "@loopback/rest-explorer": "^5.0.5",
-    "@sourceloop/core": "^7.2.4",
-    "kafkajs": "^2.2.0",
+    "@sourceloop/core": "^7.3.0",
+    "kafkajs": "^2.2.3",
     "tslib": "^2.0.0",
-    "winston": "^3.8.1"
+    "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@loopback/build": "^9.0.5",
     "@loopback/eslint-config": "^13.0.5",
