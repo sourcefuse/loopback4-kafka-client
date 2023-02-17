@@ -1,6 +1,6 @@
 {
   "name": "loopback4-kafka-client",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "loopback client for integration with apache kafka",
   "keywords": [
     "loopback-extension",
