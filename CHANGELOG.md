@@ -1,3 +1,23 @@
+## Release [v1.1.1](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.1.0..v1.1.1) March 10, 2023
+Welcome to the March 10, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
+
+  - [loopback version update](https://github.com/sourcefuse/loopback4-kafka-client/issues/14) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/69a4ed546a9da3045734470473ec094b0c5bb60c) was commited on March 10, 2023 by [gautam23-sf](mailto:gautam.agarwal@sourcefuse.com)
+    
+      - loopback version update
+      
+      - GH-14
+      
+  
+  - [Stale Bot missing in the repository](https://github.com/sourcefuse/loopback4-kafka-client/issues/12) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/0cf3fb41d1614d15f2b06d27cc3514a094500097) was commited on February 27, 2023 by [Yesha  Mavani](mailto:yesha.mavani@sourcefuse.com)
+    
+      - Added stale.yml file to configure stale options
+      
+      - GH-12
+      
+  
+Clink on the above links to understand the changes in detail.
+  ___
+
 ## Release [v1.1.0](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.0.3..v1.1.0) February 17, 2023
 Welcome to the February 17, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
 
