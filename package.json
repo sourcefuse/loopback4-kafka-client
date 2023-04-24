@@ -1,6 +1,6 @@
 {
   "name": "loopback4-kafka-client",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "loopback client for integration with apache kafka",
   "keywords": [
     "loopback-extension",
@@ -92,7 +92,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "overrides": {
-    "aws-sdk":"2.1360.0",
+    "aws-sdk": "2.1360.0",
     "@semantic-release/npm": {
       "npm": "^9.4.2"
     },
