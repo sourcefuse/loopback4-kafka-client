@@ -34,6 +34,7 @@ module.exports = {
     {name: 'services'},
     {name: 'decorators'},
     {name: 'core'},
+    {name: 'maintenance'},
   ],
 
   appendBranchNameToCommitMessage: true,
