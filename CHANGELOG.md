@@ -1,3 +1,32 @@
+## Release [v2.0.0](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.1.2..v2.0.0) June 7, 2023
+Welcome to the June 7, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
+
+  - [Loopback version update](https://github.com/sourcefuse/loopback4-kafka-client/issues/16) :- [chore(deps): loopback version update ](https://github.com/sourcefuse/loopback4-kafka-client/commit/c6776be45ea154ee7d77e196a91b0fef01cd9982) was commited on June 1, 2023 by [RaghavaroraSF](mailto:97958393+RaghavaroraSF@users.noreply.github.com)
+    
+      - Loopback version update
+      
+      -  GH-16
+      
+  
+  - [Remove support for node v14](https://github.com/sourcefuse/loopback4-kafka-client/issues/20) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/7e48aa5ff8d46ad343ba5d3938022f9a8b2455f4) was commited on May 9, 2023 by [Raghav](mailto:Raghav.arora@sourcefuse.com)
+    
+      - Version 14, v12, v10 of Nodejs reached its end of life
+      
+      - BREAKING CHANGE: End of life of node v14, node v12 and node v10
+      
+      - GH-20
+      
+  
+  - [License  and Copyright Headers’ Year Upgradation](https://github.com/sourcefuse/loopback4-kafka-client/issues/18) :- [chore(maintenance): update license and copyright headers ](https://github.com/sourcefuse/loopback4-kafka-client/commit/8daf48a97b16c00855cab76c647009e3c22a1204) was commited on May 4, 2023 by [RaghavaroraSF](mailto:97958393+RaghavaroraSF@users.noreply.github.com)
+    
+      - to reflect the year change
+      
+      -  GH-18
+      
+  
+Clink on the above links to understand the changes in detail.
+  ___
+
 ## Release [v1.1.2](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.1.1..v1.1.2) April 24, 2023
 Welcome to the April 24, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
 
