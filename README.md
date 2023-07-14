@@ -1,17 +1,27 @@
-# loopback4-kafka-client
+<a href="https://sourcefuse.github.io/arc-docs/arc-api-docs" target="_blank"><img src="https://github.com/sourcefuse/loopback4-microservice-catalog/blob/master/docs/assets/logo-dark-bg.png?raw=true" alt="ARC By SourceFuse logo" title="ARC By SourceFuse" align="right" width="150" /></a>
 
-[![LoopBack](<https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png>)](http://loopback.io/)
+# [loopback4-kafka-client](https://github.com/sourcefuse/loopback4-kafka-client)
 
-[![Node version](https://img.shields.io/node/v/loopback4-kafka-client.svg?style=flat-square)](https://nodejs.org/en/download/)
-[![Loopback Core Version](https://img.shields.io/npm/dependency-version/loopback4-kafka-client/@loopback/core.svg?color=dark%20green&style=flat-square)](https://github.com/strongloop/loopback-next)
-[![Loopback Build Version](https://img.shields.io/npm/dependency-version/loopback4-kafka-client/dev/@loopback/build.svg?color=dark%20green&style=flat-square)](https://github.com/strongloop/loopback-next/tree/master/packages/build)
-![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/loopback4-kafka-client?style=flat-square)
+<p align="left">
+<a href="https://www.npmjs.com/package/loopback4-kafka-client">
+<img src="https://img.shields.io/npm/v/loopback4-kafka-client.svg" alt="npm version" />
+</a>
+<a href="https://github.com/sourcefuse/loopback4-kafka-client/graphs/contributors" target="_blank">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/sourcefuse/loopback4-kafka-client">
+</a>
+<a href="https://www.npmjs.com/package/loopback4-kafka-client" target="_blank">
+<img alt="downloads" src="https://img.shields.io/npm/dw/loopback4-kafka-client.svg">
+</a>
+<a href="https://github.com/sourcefuse/loopback4-kafka-client/blob/master/LICENSE">
+<img src="https://img.shields.io/github/license/sourcefuse/loopback4-kafka-client.svg" alt="License" />
+</a>
+<a href="https://loopback.io/" target="_blank">
+<img alt="Powered By LoopBack 4" src="https://img.shields.io/badge/Powered%20by-LoopBack 4-brightgreen" />
+</a>
+</p>
 
-[![Latest version](https://img.shields.io/npm/v/loopback4-kafka-client.svg?style=flat-square)](https://www.npmjs.com/package/loopback4-kafka-client)
-[![License](https://img.shields.io/github/license/sourcefuse/loopback4-kafka-client.svg?color=blue&label=License&style=flat-square)](https://github.com/sourcefuse/loopback4-kafka-client/blob/master/LICENSE)
-[![Downloads](https://img.shields.io/npm/dw/loopback4-kafka-client.svg?label=Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
-[![Total Downloads](https://img.shields.io/npm/dt/loopback4-kafka-client.svg?label=Total%20Downloads&style=flat-square&color=blue)](https://www.npmjs.com/package/loopback4-kafka-client)
 
+## Overview
 
 A Kafka Client for Loopback4 built on top of [KafkaJS](https://kafka.js.org/).
 
