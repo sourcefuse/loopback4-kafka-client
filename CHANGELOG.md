@@ -1,3 +1,23 @@
+## Release [v2.0.1](https://github.com/sourcefuse/loopback4-kafka-client/compare/v2.0.0..v2.0.1) July 14, 2023
+Welcome to the July 14, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
+
+  - [Add ARC Branding in README ](https://github.com/sourcefuse/loopback4-kafka-client/issues/24) :- [docs(chore): add arc branding ](https://github.com/sourcefuse/loopback4-kafka-client/commit/8384b2ef507606db45963f9262cccb4aa868579a) was commited on July 14, 2023 by [Surbhi](mailto:98279679+Surbhi-sharma1@users.noreply.github.com)
+    
+      - add arc branding
+      
+      -  GH-24
+      
+  
+  - [Loopback version update](https://github.com/sourcefuse/loopback4-kafka-client/issues/16) :- [chore(deps): loopback version update ](https://github.com/sourcefuse/loopback4-kafka-client/commit/ded131b7395a34536b81728a9d98730f2789fc37) was commited on July 14, 2023 by [Surbhi](mailto:98279679+Surbhi-sharma1@users.noreply.github.com)
+    
+      - loopback version updates
+      
+      -  GH-16
+      
+  
+Clink on the above links to understand the changes in detail.
+  ___
+
 ## Release [v2.0.0](https://github.com/sourcefuse/loopback4-kafka-client/compare/v1.1.2..v2.0.0) June 7, 2023
 Welcome to the June 7, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
 
