@@ -47,15 +47,15 @@
     "!*/__tests__"
   ],
   "peerDependencies": {
-    "@loopback/core": "^5.0.0"
+    "@loopback/core": "^5.1.0"
   },
   "dependencies": {
-    "@loopback/boot": "^6.0.0",
-    "@loopback/core": "^5.0.0",
-    "@loopback/repository": "^6.0.0",
-    "@loopback/rest": "^13.0.0",
-    "@loopback/rest-explorer": "^6.0.0",
-    "@sourceloop/core": "^7.4.1",
+    "@loopback/boot": "^6.1.0",
+    "@loopback/core": "^5.1.0",
+    "@loopback/repository": "^6.1.0",
+    "@loopback/rest": "^13.1.0",
+    "@loopback/rest-explorer": "^6.1.0",
+    "@sourceloop/core": "^8.0.1",
     "kafkajs": "^2.2.3",
     "tslib": "^2.5.1",
     "winston": "^3.8.2"
@@ -64,10 +64,10 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
-    "@loopback/build": "^10.0.0",
-    "@loopback/core": "^5.0.0",
-    "@loopback/eslint-config": "^14.0.0",
-    "@loopback/testlab": "^6.0.0",
+    "@loopback/build": "^10.1.0",
+    "@loopback/core": "^5.1.0",
+    "@loopback/eslint-config": "^14.0.1",
+    "@loopback/testlab": "^6.1.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
@@ -79,7 +79,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "cz-customizable-ghooks": "^2.0.0",
-    "eslint": "^8.40.0",
+    "eslint": "^8.44.0",
     "git-release-notes": "^5.0.0",
     "husky": "^7.0.4",
     "jsdom": "^21.0.0",
