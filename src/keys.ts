@@ -1,8 +1,9 @@
 import {BindingKey, BindingTemplate, extensionFor} from '@loopback/core';
-import {ConsumerConfig, Kafka, ProducerConfig} from 'kafkajs';
+import {Kafka, ProducerConfig} from 'kafkajs';
 import {KafkaClientComponent} from './component';
 import {KafkaConsumerService} from './services/kafka-consumer.service';
 import {
+  ConsumerConfig,
   IStreamDefinition,
   Producer,
   ProducerFactoryType,

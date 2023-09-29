@@ -47,8 +47,14 @@ export class KafkaClientStub {
       disconnect: async () => {
         delete this.subscribers[id];
       },
-      subscribe: async (params: {topic: string}) => {
-        this.subscribers[id].topics.push(params.topic);
+      subscribe: async (params: {topic?: string; topics?: string[]}) => {
+        if (params.topic) {
+          this.subscribers[id].topics.push(params.topic);
+        } else if (params.topics) {
+          this.subscribers[id].topics.push(...params.topics);
+        } else {
+          // do nothing
+        }
       },
       run: async (params: {eachMessage: (message: AnyObject) => void}) => {
         this.subscribers[id].handler = params.eachMessage;

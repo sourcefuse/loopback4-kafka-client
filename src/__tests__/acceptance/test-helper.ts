@@ -13,6 +13,8 @@ export async function setupConsumerApplication(
   kafkaStub: KafkaClientStub,
   startHandler: StreamHandler<TestStream, Events.start>,
   stopHandler: StreamHandler<TestStream, Events.stop>,
+  commonHandler: StreamHandler<TestStream, Events>,
+  genericHandler: StreamHandler<TestStream, Events>,
   logger: ILogger,
 ): Promise<Application> {
   const restConfig = givenHttpServerConfig({});
@@ -29,6 +31,8 @@ export async function setupConsumerApplication(
   app
     .bind(eventHandlerKey<TestStream, Events.stop>(Events.stop))
     .to(stopHandler);
+  app.bind('eventHandler.common').to(commonHandler);
+  app.bind('eventHandler.generic').to(genericHandler);
   app.bind(LOGGER.LOGGER_INJECT).to(logger);
   await app.boot();
   await app.start();

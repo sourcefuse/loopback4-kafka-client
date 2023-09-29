@@ -1,7 +1,16 @@
 import {extensionPoint, extensions, Getter, inject} from '@loopback/core';
-import {EventsInStream, IConsumer, IStreamDefinition} from '../types';
+import {
+  ConsumerType,
+  EventsInStream,
+  IBaseConsumer,
+  IGenericConsumer,
+  isSharedConsumer,
+  isConsumer,
+  IStreamDefinition,
+  ConsumerConfig,
+} from '../types';
 import {ConsumerExtensionPoint, KafkaClientBindings} from '../keys';
-import {Consumer, ConsumerConfig, EachMessagePayload, Kafka} from 'kafkajs';
+import {Consumer, EachMessagePayload, Kafka} from 'kafkajs';
 import {ILogger, LOGGER} from '@sourceloop/core';
 import {KafkaErrorKeys} from '../error-keys';
 
@@ -13,7 +22,7 @@ export class KafkaConsumerService<T extends IStreamDefinition> {
   constructor(
     /* A way to get all the extensions that are registered for a consumer extension point. */
     @extensions()
-    private getConsumers: Getter<IConsumer<T, keyof T['messages']>[]>,
+    private getConsumers: Getter<ConsumerType<T, keyof T['messages']>[]>,
     @inject(KafkaClientBindings.KafkaClient)
     private client: Kafka,
     @inject(KafkaClientBindings.ConsumerConfiguration, {optional: true})
@@ -29,50 +38,39 @@ export class KafkaConsumerService<T extends IStreamDefinition> {
     const kafkaConsumerClient = this.client.consumer(this.configuration);
     this.consumers.push(kafkaConsumerClient);
     await kafkaConsumerClient.connect();
-    const consumers = await this.getConsumers();
-    const consumerMap = new Map<
-      T['topic'],
-      Map<EventsInStream<T>, IConsumer<T, EventsInStream<T>>>
-    >();
-    for (const consumer of consumers) {
-      if (!consumer.topic) {
-        throw new Error(`${KafkaErrorKeys.ConsumerWithoutTopic}: ${consumer}`);
-      }
-      if (!consumer.event) {
-        throw new Error(
-          `${KafkaErrorKeys.ConsumerWithoutEventType}: ${consumer}`,
-        );
-      }
-      await kafkaConsumerClient.subscribe({
-        topic: consumer.topic,
-      });
-      if (consumerMap.has(consumer.topic)) {
-        const eventMap = consumerMap.get(consumer.topic);
-        eventMap?.set(consumer.event, consumer);
-      } else {
-        const newMap = new Map<
-          EventsInStream<T>,
-          IConsumer<T, EventsInStream<T>>
-        >();
-        newMap.set(consumer.event, consumer);
-        consumerMap.set(consumer.topic, newMap);
-      }
-    }
-    /* this function for now, assumes that the events of a particular 
-    type could be handled in parallel and would only be ordered by key */
+
+    const {consumerMap, genericConsumerMap} = await this.buildConsumerMaps();
+    const topics: string[] = Array.from(consumerMap.keys());
+
+    await kafkaConsumerClient.subscribe({
+      topics,
+    });
     await kafkaConsumerClient.run({
       eachMessage: async (payload: EachMessagePayload) => {
         const eventMap = consumerMap.get(payload.topic as string);
+        const genericConsumer = genericConsumerMap.get(payload.topic as string);
         if (payload.message.value) {
           const message = JSON.parse(payload.message.value.toString('utf8'));
           const consumer = eventMap?.get(message.event);
 
           if (consumer) {
             await consumer.handler(message.data);
+          } else if (!genericConsumer) {
+            this.logger.warn(
+              `${KafkaErrorKeys.UnhandledEvent}: ${JSON.stringify(
+                payload,
+              )} with event: ${message.event}}`,
+            );
           } else {
             this.logger.warn(
-              `${KafkaErrorKeys.UnhandledEvent}: ${JSON.stringify(payload)}`,
+              `${KafkaErrorKeys.HandleByGenericConsumer}:${message.event}`,
             );
+          }
+          if (
+            (!consumer || this.configuration.alwaysRunGenericConsumer) &&
+            genericConsumer
+          ) {
+            await genericConsumer.handler(message.data);
           }
         } else {
           this.logger.warn(
@@ -81,6 +79,54 @@ export class KafkaConsumerService<T extends IStreamDefinition> {
         }
       },
     });
+    this.setupConsumerEventHandlers(kafkaConsumerClient);
+  }
+
+  private async buildConsumerMaps(): Promise<{
+    consumerMap: Map<T['topic'], Map<EventsInStream<T>, IBaseConsumer<T>>>;
+    genericConsumerMap: Map<T['topic'], IGenericConsumer<T>>;
+  }> {
+    const consumerMap = new Map<
+      T['topic'],
+      Map<EventsInStream<T>, IBaseConsumer<T>>
+    >();
+    const genericConsumerMap = new Map<T['topic'], IGenericConsumer<T>>();
+
+    const consumers = await this.getConsumers();
+    for (const consumer of consumers) {
+      if (!consumer.topic) {
+        throw new Error(`${KafkaErrorKeys.ConsumerWithoutTopic}: ${consumer}`);
+      }
+
+      const topic = consumer.topic;
+      if (isSharedConsumer(consumer)) {
+        const eventMap =
+          consumerMap.get(topic) ??
+          new Map<EventsInStream<T>, IBaseConsumer<T>>();
+        consumer.events.forEach(event => {
+          eventMap.set(event, consumer);
+        });
+        consumerMap.set(topic, eventMap);
+      } else if (isConsumer(consumer)) {
+        const eventMap =
+          consumerMap.get(topic) ??
+          new Map<EventsInStream<T>, IBaseConsumer<T>>();
+        eventMap.set(consumer.event, consumer);
+        consumerMap.set(topic, eventMap);
+      } else {
+        if (genericConsumerMap.has(topic)) {
+          throw new Error(
+            `${KafkaErrorKeys.MultipleGenericConsumers}: ${topic}`,
+          );
+        }
+        genericConsumerMap.set(topic, consumer);
+      }
+    }
+
+    return {consumerMap, genericConsumerMap};
+  }
+
+  private setupConsumerEventHandlers(kafkaConsumerClient: Consumer) {
     kafkaConsumerClient.on('consumer.connect', event => {
       this.logger.debug(`${event.payload}`);
     });

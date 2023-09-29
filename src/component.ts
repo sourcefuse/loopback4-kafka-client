@@ -36,7 +36,8 @@ export class KafkaClientComponent implements Component {
     }
     app
       .bind(KafkaClientBindings.ProducerFactory)
-      .toProvider(KafkaProducerFactoryProvider);
+      .toProvider(KafkaProducerFactoryProvider)
+      .inScope(BindingScope.SINGLETON);
 
     app.service(KafkaConsumerService);
 
