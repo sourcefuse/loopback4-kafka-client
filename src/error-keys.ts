@@ -5,4 +5,6 @@ export enum KafkaErrorKeys {
   EventWithoutValue = 'EventWithoutValue',
   UnhandledEvent = 'Unhandled Event',
   PublishFailed = 'Publish Failed',
+  MultipleGenericConsumers = 'Multiple Generic Consumers',
+  HandleByGenericConsumer = 'Handled By Generic Consumer',
 }

@@ -1,6 +1,6 @@
 import {inject, Provider} from '@loopback/core';
 import {ILogger, LOGGER} from '@sourceloop/core';
-import {Kafka, ProducerConfig} from 'kafkajs';
+import {CompressionTypes, Kafka, ProducerConfig} from 'kafkajs';
 import {KafkaErrorKeys} from '../error-keys';
 import {KafkaClientBindings} from '../keys';
 import {IStreamDefinition, ProducerFactoryType} from '../types';
@@ -33,6 +33,7 @@ export class KafkaProducerFactoryProvider<T extends IStreamDefinition>
             await producer.connect();
             await producer.send({
               topic: topic,
+              compression: CompressionTypes.GZIP,
               messages: payload.map(message => ({
                 key,
                 value: JSON.stringify({

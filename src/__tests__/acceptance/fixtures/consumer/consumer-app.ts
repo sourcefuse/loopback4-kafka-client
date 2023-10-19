@@ -8,6 +8,8 @@ import {KafkaClientBindings} from '../../../../keys';
 import {KafkaClientStub} from '../../../stubs';
 import {StartConsumer} from './start-consumer.extension';
 import {StopConsumer} from './stop-consumer.extension';
+import {CommonConsumer} from './shared-consumer.extension';
+import {GenericConsumer} from './generic-consumer.extension';
 
 export class ConsumerApp extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -26,6 +28,8 @@ export class ConsumerApp extends BootMixin(
     this.component(KafkaClientComponent);
     this.service(StartConsumer);
     this.service(StopConsumer);
+    this.service(CommonConsumer);
+    this.service(GenericConsumer);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here

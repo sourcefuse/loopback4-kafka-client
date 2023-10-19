@@ -8,5 +8,8 @@ export interface TestStream extends IStreamDefinition {
   messages: {
     [Events.start]: StartEvent;
     [Events.stop]: StopEvent;
+    [Events.reset]: {};
+    [Events.pause]: {};
+    [Events.close]: {};
   };
 }

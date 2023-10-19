@@ -19,6 +19,8 @@ describe('end-to-end', () => {
   let producerApp: Application;
   let startHandler: sinon.SinonStub;
   let stopHandler: sinon.SinonStub;
+  let commonHandler: sinon.SinonStub;
+  let genericHandler: sinon.SinonStub;
   let logger: ILogger;
   const kafkaClient = new KafkaClientStub();
   before(setupApplications);
@@ -29,6 +31,8 @@ describe('end-to-end', () => {
   afterEach(() => {
     startHandler.reset();
     stopHandler.reset();
+    commonHandler.reset();
+    genericHandler.reset();
   });
 
   describe('Acceptance: event stream with single topic', () => {
@@ -68,7 +72,42 @@ describe('end-to-end', () => {
       );
     });
 
-    it('should not handle a unspecified events', async () => {
+    it('should consume from a common consumer with multiple events for a single topic', async () => {
+      const producerInstance = producerApp.getSync<Producer<TestStream>>(
+        producerKey(Topics.First),
+      );
+      const reset = {
+        resetTime: new Date(),
+      };
+      const pause = {
+        pauseTime: new Date(),
+      };
+      await producerInstance.send(Events.reset, [reset]);
+      await producerInstance.send(Events.pause, [pause]);
+      sinon.assert.called(commonHandler);
+      expect(commonHandler.getCalls()[0].args[0]).to.be.deepEqual(
+        JSON.parse(JSON.stringify(reset)),
+      );
+      expect(commonHandler.getCalls()[1].args[0]).to.be.deepEqual(
+        JSON.parse(JSON.stringify(pause)),
+      );
+    });
+
+    it('should consume from a generic consumer without events for a single topic', async () => {
+      const producerInstance = producerApp.getSync<Producer<TestStream>>(
+        producerKey(Topics.First),
+      );
+      const close = {
+        closeTime: new Date(),
+      };
+      await producerInstance.send(Events.close, [close]);
+      sinon.assert.called(genericHandler);
+      expect(genericHandler.getCalls()[0].args[0]).to.be.deepEqual(
+        JSON.parse(JSON.stringify(close)),
+      );
+    });
+
+    it('should not handle an unspecified events', async () => {
       const warnStub = sinon.stub(logger, 'warn');
       const producerInstance = kafkaClient.producer();
       const payload = {
@@ -82,12 +121,10 @@ describe('end-to-end', () => {
         topic: Topics.First,
         messages: [payload],
       });
+
       sinon.assert.calledOnce(warnStub);
       expect(warnStub.lastCall.args[0]).to.equal(
-        `${KafkaErrorKeys.UnhandledEvent}: ${JSON.stringify({
-          topic: Topics.First,
-          message: payload,
-        })}`,
+        `${KafkaErrorKeys.HandleByGenericConsumer}:${undefined}`,
       );
     });
   });
@@ -95,8 +132,10 @@ describe('end-to-end', () => {
   async function setupApplications() {
     startHandler = sinon.stub().callsFake(() => {});
     stopHandler = sinon.stub().callsFake(() => {});
+    commonHandler = sinon.stub().callsFake(() => {});
+    genericHandler = sinon.stub().callsFake(() => {});
     logger = {
-      warn: e => console.warn(e),
+      warn: e => console.log(e),
       log: e => console.log(e),
       error: e => console.error(e),
       info: e => console.info(e),
@@ -106,6 +145,8 @@ describe('end-to-end', () => {
       kafkaClient,
       startHandler,
       stopHandler,
+      commonHandler,
+      genericHandler,
       logger,
     );
     producerApp = await setupProducerApplication(kafkaClient);
