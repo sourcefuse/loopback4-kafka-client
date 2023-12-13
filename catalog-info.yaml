@@ -4,6 +4,7 @@ metadata:
   name: loopback4-kafka-client
   annotations:
     github.com/project-slug: sourcefuse/loopback4-kafka-client
+    backstage.io/techdocs-ref: dir:.
   namespace: arc
   description: A Kafka Client for Loopback4 built on top of KafkaJS.
   tags:

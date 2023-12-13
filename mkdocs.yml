@@ -1,0 +1,8 @@
+site_name: loopback4-kafka-client
+site_description: loopback4-kafka-client
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
