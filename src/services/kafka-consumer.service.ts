@@ -20,7 +20,7 @@ import {KafkaErrorKeys} from '../error-keys';
 export class KafkaConsumerService<T extends IStreamDefinition> {
   consumers: Consumer[] = [];
   constructor(
-    /* A way to get all the extensions that are registered for a consumer extension point. */
+    /* A way to get all the extensions that are registered for a consumer extension point */
     @extensions()
     private getConsumers: Getter<ConsumerType<T, keyof T['messages']>[]>,
     @inject(KafkaClientBindings.KafkaClient)
