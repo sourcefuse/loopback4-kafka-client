@@ -52,7 +52,7 @@
   "dependencies": {
     "@loopback/boot": "^7.0.0",
     "@loopback/core": "^6.0.0",
-    "@loopback/repository": "^7.0.0",
+    "@loopback/repository": "^7.0.1",
     "@loopback/rest": "^14.0.0",
     "@loopback/rest-explorer": "^7.0.0",
     "@sourceloop/core": "^11.0.1",
