@@ -1,3 +1,23 @@
+## Release [v3.0.3](https://github.com/sourcefuse/loopback4-kafka-client/compare/v3.0.2..v3.0.3) May 15, 2024
+Welcome to the May 15, 2024 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
+
+  - [Changelog not generated](https://github.com/sourcefuse/loopback4-kafka-client/issues/55) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/230f00346b535a1d19b9c9db5cddc26c4ab7db71) was commited on May 15, 2024 by [Yesha Mavani](mailto:yesha.mavani@sourcefuse.com)
+    
+      - add the missing ci checks in pr
+      
+      - GH-55
+      
+  
+  - [Copy the Readme to root as well](https://github.com/sourcefuse/loopback4-kafka-client/issues/53) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/c88a289f9dce71b8cdf6b25df5cae53b537dfb4f) was commited on May 7, 2024 by [arpit1503khanna](mailto:arpit.khanna@sourcefuse.com)
+    
+      - copy the Readme to root as well
+      
+      - GH-53
+      
+  
+Clink on the above links to understand the changes in detail.
+  ___
+
 ## Release [v2.0.1](https://github.com/sourcefuse/loopback4-kafka-client/compare/v2.0.0..v2.0.1) July 14, 2023
 Welcome to the July 14, 2023 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
 
