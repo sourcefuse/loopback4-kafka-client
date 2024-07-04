@@ -54,7 +54,7 @@
     "@loopback/core": "^6.0.2",
     "@loopback/repository": "^7.0.2",
     "@loopback/rest": "^14.0.2",
-    "@loopback/rest-explorer": "^7.0.2",
+    "@loopback/rest-explorer": "^7.0.3",
     "@sourceloop/core": "^14.0.0",
     "kafkajs": "^2.2.3",
     "tslib": "^2.6.2",
