@@ -50,14 +50,14 @@
     "@loopback/core": "^6.0.2"
   },
   "dependencies": {
-    "@loopback/boot": "^7.0.2",
-    "@loopback/core": "^6.0.2",
-    "@loopback/repository": "^7.0.2",
+    "@loopback/boot": "^7.0.5",
+    "@loopback/core": "^6.1.2",
+    "@loopback/repository": "^7.0.5",
     "@loopback/rest": "^14.0.2",
-    "@loopback/rest-explorer": "^7.0.2",
-    "@sourceloop/core": "^14.0.0",
+    "@loopback/rest-explorer": "^7.0.5",
+    "@sourceloop/core": "^14.1.1",
     "kafkajs": "^2.2.3",
-    "tslib": "^2.6.2",
+    "tslib": "^2.7.0",
     "winston": "^3.8.2"
   },
   "devDependencies": {
@@ -65,7 +65,7 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@loopback/build": "^11.0.2",
-    "@loopback/core": "^6.0.2",
+    "@loopback/core": "^6.1.2",
     "@loopback/eslint-config": "^15.0.2",
     "@loopback/testlab": "^7.0.2",
     "@semantic-release/changelog": "^6.0.1",
