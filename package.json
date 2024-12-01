@@ -58,7 +58,7 @@
     "@sourceloop/core": "^14.0.0",
     "kafkajs": "^2.2.3",
     "tslib": "^2.6.2",
-    "winston": "^3.8.2"
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
