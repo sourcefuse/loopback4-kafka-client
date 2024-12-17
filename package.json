@@ -47,14 +47,14 @@
     "!*/__tests__"
   ],
   "peerDependencies": {
-    "@loopback/core": "^6.0.2"
+    "@loopback/core": "^6.1.6"
   },
   "dependencies": {
-    "@loopback/boot": "^7.0.2",
-    "@loopback/core": "^6.0.2",
-    "@loopback/repository": "^7.0.2",
-    "@loopback/rest": "^14.0.2",
-    "@loopback/rest-explorer": "^7.0.2",
+    "@loopback/boot": "^7.0.9",
+    "@loopback/core": "^6.1.6",
+    "@loopback/repository": "^7.0.9",
+    "@loopback/rest": "^14.0.9",
+    "@loopback/rest-explorer": "^7.0.9",
     "@sourceloop/core": "^14.0.0",
     "kafkajs": "^2.2.3",
     "tslib": "^2.6.2",
@@ -64,10 +64,10 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
-    "@loopback/build": "^11.0.2",
-    "@loopback/core": "^6.0.2",
-    "@loopback/eslint-config": "^15.0.2",
-    "@loopback/testlab": "^7.0.2",
+    "@loopback/build": "^11.0.8",
+    "@loopback/core": "^6.1.6",
+    "@loopback/eslint-config": "^15.0.4",
+    "@loopback/testlab": "^7.0.8",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
