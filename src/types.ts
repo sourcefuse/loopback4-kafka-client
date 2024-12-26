@@ -46,7 +46,7 @@ export interface ISharedConsumer<Stream extends IStreamDefinition> {
 
 export interface IGenericConsumer<Stream extends IStreamDefinition> {
   topic: TopicForStream<Stream>;
-  handler: StreamHandler<Stream, EventsInStream<Stream>>;
+  handler: GenericStreamHandler<Stream>;
 }
 
 export function isGenericConsumer<
@@ -89,3 +89,7 @@ export type StreamHandler<
   Stream extends IStreamDefinition,
   K extends EventsInStream<Stream>,
 > = (payload: Stream['messages'][K]) => Promise<void>;
+
+export type GenericStreamHandler<Stream extends IStreamDefinition> = (
+  payload: Stream['messages'],
+) => Promise<void>;
