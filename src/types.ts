@@ -4,6 +4,7 @@ export interface KafkaClientOptions {
   connection: KafkaConfig;
   topics?: string[];
   initObservers?: boolean;
+  genericTopics?: string[];
 }
 
 export type ConsumerConfig = {
@@ -46,7 +47,7 @@ export interface ISharedConsumer<Stream extends IStreamDefinition> {
 
 export interface IGenericConsumer<Stream extends IStreamDefinition> {
   topic: TopicForStream<Stream>;
-  handler: StreamHandler<Stream, EventsInStream<Stream>>;
+  handler: GenericStreamHandler<Stream>;
 }
 
 export function isGenericConsumer<
@@ -81,11 +82,23 @@ export interface Producer<Stream extends IStreamDefinition> {
   ): Promise<void>;
 }
 
+export interface GenericProducer<Stream extends IStreamDefinition> {
+  send(payload: Stream['messages'][], key?: string): Promise<void>;
+}
+
 export type ProducerFactoryType<Stream extends IStreamDefinition> = (
   topic: Stream['topic'],
 ) => Producer<Stream>;
+
+export type GenericProducerFactoryType<Stream extends IStreamDefinition> = (
+  topic: Stream['topic'],
+) => GenericProducer<Stream>;
 
 export type StreamHandler<
   Stream extends IStreamDefinition,
   K extends EventsInStream<Stream>,
 > = (payload: Stream['messages'][K]) => Promise<void>;
+
+export type GenericStreamHandler<Stream extends IStreamDefinition> = (
+  payload: Stream['messages'],
+) => Promise<void>;

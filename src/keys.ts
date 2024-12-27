@@ -4,6 +4,8 @@ import {KafkaClientComponent} from './component';
 import {KafkaConsumerService} from './services/kafka-consumer.service';
 import {
   ConsumerConfig,
+  GenericProducer,
+  GenericProducerFactoryType,
   IStreamDefinition,
   Producer,
   ProducerFactoryType,
@@ -30,12 +32,20 @@ export namespace KafkaClientBindings {
   export const ProducerFactory = BindingKey.create<
     ProducerFactoryType<IStreamDefinition>
   >(`${KafkaNamespace}.ProducerFactory`);
+  export const GenericProducerFactor = BindingKey.create<
+    GenericProducerFactoryType<IStreamDefinition>
+  >(`${KafkaNamespace}.GenericProducerFactory`);
   export const LifeCycleGroup = `${KafkaNamespace}.KAFKA_OBSERVER_GROUP`;
 }
 
 export const producerKey = (topic: string) =>
   BindingKey.create<Producer<IStreamDefinition>>(
     `${KafkaNamespace}.producer.${topic}`,
+  );
+
+export const genericProducerKey = (topic: string) =>
+  BindingKey.create<GenericProducer<IStreamDefinition>>(
+    `${KafkaNamespace}.generic.producer.${topic}`,
   );
 
 export const eventHandlerKey = <

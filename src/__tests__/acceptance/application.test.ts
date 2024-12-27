@@ -13,6 +13,7 @@ import {
   setupConsumerApplication,
   setupProducerApplication,
 } from './test-helper';
+import {GenericProducerService} from './fixtures/producer/generic-producer.service';
 
 describe('end-to-end', () => {
   let consumerApp: Application;
@@ -93,18 +94,31 @@ describe('end-to-end', () => {
       );
     });
 
+    it('should produce from a generic producer without events for a single topic', async () => {
+      const producerService = producerApp.getSync<GenericProducerService>(
+        `services.GenericProducerService`,
+      );
+      const message = 'message';
+      await producerService.produceMessage(message);
+      sinon.assert.called(genericHandler);
+      expect(genericHandler.getCalls()[0].args[0]).to.be.deepEqual({
+        data: message,
+      });
+    });
+
     it('should consume from a generic consumer without events for a single topic', async () => {
       const producerInstance = producerApp.getSync<Producer<TestStream>>(
-        producerKey(Topics.First),
+        producerKey(Topics.Generic),
       );
       const close = {
         closeTime: new Date(),
       };
       await producerInstance.send(Events.close, [close]);
       sinon.assert.called(genericHandler);
-      expect(genericHandler.getCalls()[0].args[0]).to.be.deepEqual(
-        JSON.parse(JSON.stringify(close)),
-      );
+      expect(genericHandler.getCalls()[0].args[0]).to.be.deepEqual({
+        data: JSON.parse(JSON.stringify(close)),
+        event: Events.close,
+      });
     });
 
     it('should not handle an unspecified events', async () => {
@@ -118,7 +132,7 @@ describe('end-to-end', () => {
       };
       await producerInstance.connect();
       producerInstance.send({
-        topic: Topics.First,
+        topic: Topics.Generic,
         messages: [payload],
       });
 

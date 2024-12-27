@@ -13,3 +13,10 @@ export interface TestStream extends IStreamDefinition {
     [Events.close]: {};
   };
 }
+
+export interface GenericStream extends IStreamDefinition {
+  topic: Topics.Generic;
+  messages: {
+    data: string;
+  };
+}

@@ -41,7 +41,7 @@ export class KafkaConsumerService<T extends IStreamDefinition> {
 
     const {consumerMap, genericConsumerMap} = await this.buildConsumerMaps();
     const topics: string[] = Array.from(consumerMap.keys());
-
+    topics.push(...Array.from(genericConsumerMap.keys()));
     await kafkaConsumerClient.subscribe({
       topics,
     });
@@ -70,7 +70,7 @@ export class KafkaConsumerService<T extends IStreamDefinition> {
             (!consumer || this.configuration.alwaysRunGenericConsumer) &&
             genericConsumer
           ) {
-            await genericConsumer.handler(message.data);
+            await genericConsumer.handler(message);
           }
         } else {
           this.logger.warn(
