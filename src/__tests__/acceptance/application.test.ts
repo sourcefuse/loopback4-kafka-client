@@ -13,6 +13,7 @@ import {
   setupConsumerApplication,
   setupProducerApplication,
 } from './test-helper';
+import {GenericProducerService} from './fixtures/producer/generic-producer.service';
 
 describe('end-to-end', () => {
   let consumerApp: Application;
@@ -91,6 +92,18 @@ describe('end-to-end', () => {
       expect(commonHandler.getCalls()[1].args[0]).to.be.deepEqual(
         JSON.parse(JSON.stringify(pause)),
       );
+    });
+
+    it('should produce from a generic producer without events for a single topic', async () => {
+      const producerService = producerApp.getSync<GenericProducerService>(
+        `services.GenericProducerService`,
+      );
+      const message = 'message';
+      await producerService.produceMessage(message);
+      sinon.assert.called(genericHandler);
+      expect(genericHandler.getCalls()[0].args[0]).to.be.deepEqual({
+        data: message,
+      });
     });
 
     it('should consume from a generic consumer without events for a single topic', async () => {

@@ -7,6 +7,7 @@ import {KafkaClientComponent} from '../../../../component';
 import {KafkaClientBindings} from '../../../../keys';
 import {KafkaClientStub} from '../../../stubs';
 import {Topics} from '../topics.enum';
+import {GenericProducerService} from './generic-producer.service';
 
 export class ProducerApp extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -16,11 +17,13 @@ export class ProducerApp extends BootMixin(
 
     this.configure(KafkaClientBindings.Component).to({
       topics: Object.values(Topics) as string[],
+      genericTopics: [Topics.Generic],
     });
     this.bind<KafkaClientStub>(KafkaClientBindings.KafkaClient).to(
       options.client,
     );
     this.component(KafkaClientComponent);
+    this.service(GenericProducerService);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here

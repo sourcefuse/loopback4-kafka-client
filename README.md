@@ -164,6 +164,7 @@ export class StartConsumer implements IConsumer<TestStream, Events.start> {
 
 A Producer is a loopback service for producing message for a particular topic, you can inject a producer using the `@producer(TOPIC_NAME)` decorator.
 Note: The topic name passed to decorator must be first configured in the Component configuration's topic property -
+If you want to produce a raw message without any event type, you can use the `@genericProducer(TOPIC_NAME)` decorator, note that in this case, the topic name must be passed in the genericTopics property of the component configuration.
 
 #### Example
 

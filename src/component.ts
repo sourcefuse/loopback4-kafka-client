@@ -10,9 +10,12 @@ import {
 } from '@loopback/core';
 import {LoggerExtensionComponent} from '@sourceloop/core';
 import {Kafka} from 'kafkajs';
-import {KafkaClientBindings, producerKey} from './keys';
+import {genericProducerKey, KafkaClientBindings, producerKey} from './keys';
 import {KafkaObserver} from './observers';
-import {KafkaProducerFactoryProvider} from './providers';
+import {
+  GenericKafkaProducerFactoryProvider,
+  KafkaProducerFactoryProvider,
+} from './providers';
 import {KafkaConsumerService} from './services/kafka-consumer.service';
 import {KafkaClientOptions} from './types';
 
@@ -39,6 +42,11 @@ export class KafkaClientComponent implements Component {
       .toProvider(KafkaProducerFactoryProvider)
       .inScope(BindingScope.SINGLETON);
 
+    app
+      .bind(KafkaClientBindings.GenericProducerFactor)
+      .toProvider(GenericKafkaProducerFactoryProvider)
+      .inScope(BindingScope.SINGLETON);
+
     app.service(KafkaConsumerService);
 
     if (configuration?.topics) {
@@ -47,6 +55,18 @@ export class KafkaClientComponent implements Component {
         app
           .bind(producerKey(topic))
           .to(producerFactory(topic))
+          .inScope(BindingScope.SINGLETON);
+      });
+    }
+
+    if (configuration?.genericTopics) {
+      const genericProducerFactory = app.getSync(
+        KafkaClientBindings.GenericProducerFactor,
+      );
+      configuration.genericTopics.forEach(topic => {
+        app
+          .bind(genericProducerKey(topic))
+          .to(genericProducerFactory(topic))
           .inScope(BindingScope.SINGLETON);
       });
     }

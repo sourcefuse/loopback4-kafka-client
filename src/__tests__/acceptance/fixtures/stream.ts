@@ -17,6 +17,6 @@ export interface TestStream extends IStreamDefinition {
 export interface GenericStream extends IStreamDefinition {
   topic: Topics.Generic;
   messages: {
-    [Events.close]: {};
+    data: string;
   };
 }
