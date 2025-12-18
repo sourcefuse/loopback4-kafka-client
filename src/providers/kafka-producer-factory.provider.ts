@@ -8,9 +8,9 @@ import {IStreamDefinition, ProducerFactoryType} from '../types';
 /* It's a factory provider that creates a producer factory
  that creates a producer that sends messages
 to a topic */
-export class KafkaProducerFactoryProvider<T extends IStreamDefinition>
-  implements Provider<ProducerFactoryType<T>>
-{
+export class KafkaProducerFactoryProvider<
+  T extends IStreamDefinition,
+> implements Provider<ProducerFactoryType<T>> {
   constructor(
     @inject(KafkaClientBindings.KafkaClient)
     private client: Kafka,

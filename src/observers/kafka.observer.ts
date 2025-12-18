@@ -12,9 +12,9 @@ import {IStreamDefinition} from '../types';
  when the application starts and stops
 it when the application stops */
 @lifeCycleObserver()
-export class KafkaObserver<T extends IStreamDefinition>
-  implements LifeCycleObserver
-{
+export class KafkaObserver<
+  T extends IStreamDefinition,
+> implements LifeCycleObserver {
   constructor(
     @inject(LOGGER.LOGGER_INJECT) private readonly logger: ILogger,
     @service(KafkaConsumerService) private consumer: KafkaConsumerService<T>,

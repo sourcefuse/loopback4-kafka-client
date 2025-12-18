@@ -7,9 +7,9 @@ import {KafkaClientBindings} from '../keys';
 
 /* The class `GenericKafkaProducerFactoryProvider` is a TypeScript class that provides a factory for creating
 Kafka producers to send messages to specified topics without events. */
-export class GenericKafkaProducerFactoryProvider<T extends IStreamDefinition>
-  implements Provider<GenericProducerFactoryType<T>>
-{
+export class GenericKafkaProducerFactoryProvider<
+  T extends IStreamDefinition,
+> implements Provider<GenericProducerFactoryType<T>> {
   constructor(
     @inject(KafkaClientBindings.KafkaClient)
     private client: Kafka,
