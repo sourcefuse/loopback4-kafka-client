@@ -1,3 +1,31 @@
+## Release [v5.0.0](https://github.com/sourcefuse/loopback4-kafka-client/compare/v4.0.0..v5.0.0) December 19, 2025
+Welcome to the December 19, 2025 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
+
+  - [](https://github.com/sourcefuse/loopback4-kafka-client/issues/99) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/c0bdad903cebf5a343edd43a95a5a3cc572bc317) was commited on December 18, 2025 by [Vaibhav Bhalla](mailto:vaibhav.bhalla@sourcefuse.com)
+    
+      - sourceloop core version upgrade
+      
+      - BREAKING CHANGE: YES
+      
+      - GH-99
+      
+  
+  - [](https://github.com/sourcefuse/loopback4-kafka-client/issues/) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/acffa579d05da71380416e6e472f86e203d17a86) was commited on December 18, 2025 by [Vaibhav Bhalla](mailto:vaibhav.bhalla@sourcefuse.com)
+    
+  
+  - [](https://github.com/sourcefuse/loopback4-kafka-client/issues/) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/c1988a166bfbd67b807da780f9dcf7fa984423a7) was commited on October 27, 2025 by [Yesha Mavani](mailto:yesha.mavani@sourcefuse.com)
+    
+  
+  - [](https://github.com/sourcefuse/loopback4-kafka-client/issues/92) :- [](https://github.com/sourcefuse/loopback4-kafka-client/commit/4b8fbaad8b5390cbbc60c30e6c84d1f5851af0d7) was commited on September 26, 2025 by [Vaibhav Bhalla](mailto:vaibhav.bhalla@sourcefuse.com)
+    
+      - fix audit vulnerability
+      
+      - GH-92
+      
+  
+Clink on the above links to understand the changes in detail.
+  ___
+
 ## Release [v4.0.0](https://github.com/sourcefuse/loopback4-kafka-client/compare/v3.0.7..v4.0.0) September 8, 2025
 Welcome to the September 8, 2025 release of loopback4-kafka-client. There are many updates in this version that we hope you will like, the key highlights include:
 
