@@ -55,7 +55,7 @@
     "@loopback/repository": "^8.0.3",
     "@loopback/rest": "^15.0.4",
     "@loopback/rest-explorer": "^8.0.4",
-    "@sourceloop/core": "^15.0.1",
+    "@sourceloop/core": "^20.0.0",
     "kafkajs": "^2.2.3",
     "tslib": "^2.6.2",
     "winston": "^3.17.0"
