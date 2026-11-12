@@ -96,17 +96,18 @@
   "overrides": {
     "aws-sdk": "2.1360.0",
     "validator": "13.15.22",
-    "node-forge": "1.4.0",
+    "node-forge": "^1.4.3",
     "jws": "3.2.3",
     "glob": "11.1.0",
     "underscore": "1.13.8",
-    "undici": "7.24.5",
+    "undici": "^7.30.1",
     "git-release-notes": {
       "ejs": "^3.1.8",
       "yargs": "^17.6.2"
     },
-    "axios": "1.16.0",
-    "form-data":"4.0.6"
+    "axios": "^1.20.0",
+    "form-data":"4.0.6",
+    "postman-request": "2.88.1-postman.49"
   },
   "config": {
     "commitizen": {
